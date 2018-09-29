@@ -1,0 +1,23 @@
+.bg-login {
+	padding: 2.5em;
+    background: #fff;
+	
+}
+.w3layouts_main h1 {
+	text-align: center;
+	text-transform: capitalize;
+	padding: 1em 0;
+	color: #022411;
+}
+.bg {
+	background: url(../images/udinus.jpg) no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+.login-logo a{
+	color : #fd0707;
+}
+.login-box-msg{
+	color:#fd0707;
+	font-size: 25px;
+}
