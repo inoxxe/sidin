@@ -23,6 +23,7 @@ class Control_peminjaman extends CI_Controller {
 					$this->load->view('helloworld/index');
 				}
 				
+				
 			}
 	
 
@@ -37,7 +38,7 @@ class Control_peminjaman extends CI_Controller {
 				$data = $this->model_peminjaman->GetWhere('register',$where);
 				$data = array('data' => $data );	
 				$this->load->view('profil',$data);
-				
+
 			}else{
 					$this->load->view('helloworld/index');
 
