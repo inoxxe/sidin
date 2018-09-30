@@ -17,9 +17,7 @@ class Helloword extends CI_Controller{
 	public function loginadmin(){
 		$this->load->view('loginadmin');
 	}
-	public function formregister(){
-		$this->load->view('formregister');
-	}
+	
 	
 	public function daftar_mahasiswa(){
 	$data=$this->load->model('model_operator');
@@ -83,84 +81,6 @@ class Helloword extends CI_Controller{
 		redirect(base_url('index.php/helloword/index'));
 	}
 	
-	public function prosesregister()
-	{
-		$this->load->model('model_operator');
-		$data = array(
-        'nim' => $this->input->post('nim'),
-        'nama' => $this->input->post('nama'),
-        'password' => md5($this->input->post('password')),
-        'jns_klmn' => $this->input->post('jns_klmn'),
-        'lahir' => $this->input->post('lahir'),
-        'alamat' => $this->input->post('alamat'),
-        'jurusan' => $this->input->post('jurusan'),
-        'orangtua' => $this->input->post('orangtua'),
-        'level' => $this->input->post('level')
-         );
-
-		$data = $this->model_operator->Insert('register', $data);
-		
-    	redirect(base_url('index.php/helloword/formregister'));
-	}
-
-	public function mahasiswa()
-	{
-		$this->load->view('mahasiswa');
-	}
-	public function delete($id)
-	{
-	    $id = array('id' => $id);
-	    $this->load->model('model_operator');
-	    $this->model_operator->Delete('register', $id);
-	    redirect('helloword/daftar_mahasiswa');
-	}
-
-	public function editmhs($id)
-	{
-		$this->load->model('model_operator');
-	    $mhs = $this->model_operator->GetWhere('register', array('id' => $id));
-	    $data = array(
-	    'id' => $mhs[0]['id'],
-        'nim' => $mhs[0]['nim'],
-        'nama' => $mhs[0]['nama'],
-        'jns_klmn' => $mhs[0]['jns_klmn'],
-        'lahir' => $mhs[0]['lahir'],
-        'alamat' => $mhs[0]['alamat'],
-        'jurusan' => $mhs[0]['jurusan'],
-        'orangtua' => $mhs[0]['orangtua'],
-        );
-    	$this->load->view('edit', $data);  
-	}
 	
-	public function prosesedit()
-	{
-		$id = $_POST['id'];
-	    $nim = $_POST['nim'];
-	    $nama = $_POST['nama'];
-	    $jns_klmn = $_POST['jns_klmn'];
-	    $lahir = $_POST['lahir'];
-	    $alamat = $_POST['alamat'];
-	    $jurusan = $_POST['jurusan'];
-	    $orangtua = $_POST['orangtua'];
-
-	    $data = array(
-	    'nim' => $this->input->post('nim'),
-        'nama' => $this->input->post('nama'),
-        'jns_klmn' => $this->input->post('jns_klmn'),
-        'lahir' => $this->input->post('lahir'),
-        'alamat' => $this->input->post('alamat'),
-        'jurusan' => $this->input->post('jurusan'),
-        'orangtua' => $this->input->post('orangtua'),
-      
-	     );
-	    $where = array(
-	        'id' => $id,
-	    );
-	    $this->load->model('model_operator');
-	    $res = $this->model_operator->Update('register', $data, $where);
-	    if ($res>0) {
-	        redirect('helloword/daftar_mahasiswa','refresh');
-	    }
-	}
 
 }
